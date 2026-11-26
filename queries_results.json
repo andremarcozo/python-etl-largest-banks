@@ -1,0 +1,96 @@
+{
+    "query_1": [
+        {
+            "Name": "JPMorgan Chase",
+            "MC_USD_Billion": 852.89,
+            "MC_GBP_Billion": 682.31,
+            "MC_EUR_Billion": 793.19,
+            "MC_INR_Billion": 70747.23
+        },
+        {
+            "Name": "China Construction Bank",
+            "MC_USD_Billion": 414.07,
+            "MC_GBP_Billion": 331.26,
+            "MC_EUR_Billion": 385.09,
+            "MC_INR_Billion": 34347.11
+        },
+        {
+            "Name": "Bank of America",
+            "MC_USD_Billion": 395.81,
+            "MC_GBP_Billion": 316.65,
+            "MC_EUR_Billion": 368.1,
+            "MC_INR_Billion": 32832.44
+        },
+        {
+            "Name": "Agricultural Bank of China",
+            "MC_USD_Billion": 352.05,
+            "MC_GBP_Billion": 281.64,
+            "MC_EUR_Billion": 327.41,
+            "MC_INR_Billion": 29202.55
+        },
+        {
+            "Name": "Morgan Stanley",
+            "MC_USD_Billion": 339.79,
+            "MC_GBP_Billion": 271.83,
+            "MC_EUR_Billion": 316.0,
+            "MC_INR_Billion": 28185.58
+        },
+        {
+            "Name": "Industrial and Commercial Bank of China",
+            "MC_USD_Billion": 328.41,
+            "MC_GBP_Billion": 262.73,
+            "MC_EUR_Billion": 305.42,
+            "MC_INR_Billion": 27241.61
+        },
+        {
+            "Name": "HSBC",
+            "MC_USD_Billion": 315.93,
+            "MC_GBP_Billion": 252.74,
+            "MC_EUR_Billion": 293.81,
+            "MC_INR_Billion": 26206.39
+        },
+        {
+            "Name": "Goldman Sachs",
+            "MC_USD_Billion": 312.58,
+            "MC_GBP_Billion": 250.06,
+            "MC_EUR_Billion": 290.7,
+            "MC_INR_Billion": 25928.51
+        },
+        {
+            "Name": "Bank of China",
+            "MC_USD_Billion": 299.81,
+            "MC_GBP_Billion": 239.85,
+            "MC_EUR_Billion": 278.82,
+            "MC_INR_Billion": 24869.24
+        },
+        {
+            "Name": "Royal Bank of Canada",
+            "MC_USD_Billion": 278.33,
+            "MC_GBP_Billion": 222.66,
+            "MC_EUR_Billion": 258.85,
+            "MC_INR_Billion": 23087.47
+        }
+    ],
+    "query_2": [
+        {
+            "AVG(MC_GBP_Billion)": 311.173
+        }
+    ],
+    "query_3": [
+        {
+            "Name": "JPMorgan Chase"
+        },
+        {
+            "Name": "China Construction Bank"
+        },
+        {
+            "Name": "Bank of America"
+        },
+        {
+            "Name": "Agricultural Bank of China"
+        },
+        {
+            "Name": "Morgan Stanley"
+        }
+    ]
+}

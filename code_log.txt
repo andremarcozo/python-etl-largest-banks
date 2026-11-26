@@ -1,0 +1,10 @@
+
+2026-Nov-25-21:24:24 - Preliminaries complete. Initiating ETL process
+2026-Nov-25-21:24:25 - Data extraction complete. Initiating Transformation process
+2026-Nov-25-21:24:25 - Data transformation complete. Initiating loading process to csv and json
+2026-Nov-25-21:24:25 - Data saved to CSV and Jsons files
+2026-Nov-25-21:24:25 - SQL Connection initiated
+2026-Nov-25-21:24:25 - Data loaded to Database as a table, Executing queries
+2026-Nov-25-21:24:25 - Query results saved as a JSON file.
+2026-Nov-25-21:24:25 - Process Complete
+2026-Nov-25-21:24:25 - Server Connection closed
