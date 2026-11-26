@@ -8,13 +8,14 @@ import sqlite3
 from queries import queries_list
 import json
 
-url = "https://web.archive.org/web/20230908091635/https://en.wikipedia.org/wiki/List_of_largest_banks"
+url = "https://en.wikipedia.org/wiki/List_of_largest_banks"
 
 first_table_attributes =['Name', 'MC_USD_Billion']
 final_table_attributes = ['Name', 'MC_USD_Billion', 'MC_GBP_Billion', 'MC_EUR_Billion', 'MC_INR_Billion']
 
 csv_path = 'Largest_banks_data.csv'
-exchange_path = '/home/traive/Documentos/ESTUDOS/python-project-for-data-engeneering/exchange_rate.csv'
+json_path = 'queries_results.json'
+exchange_path = 'exchange_rate.csv'
 queries_result_path = 'Queries_results.csv'
 
 
@@ -43,14 +44,14 @@ def extract(url, columns):
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
-        table = soup.find('table')
+        table = soup.find('table', id='mwAyI')
         
         rows = table.find_all('tr')
 
         for row in rows:
             cols = row.find_all('td')
             if len(cols) >=3:
-                name = cols[1].get_text(strip=True)
+                name = cols[0].get_text(strip=True)
                 market_cap = cols[2].get_text(strip=True)
                 final_table.append([name, market_cap])
 
@@ -83,24 +84,29 @@ def load_to_csv(df, csv_path = csv_path):
 def load_to_db(df, db_name, table_name, connection):
     df.to_sql(table_name, connection, if_exists='replace', index=False)
 
-
-
-
 def run_queries(queries, conn):
-
+    queries_results = {}
     
-    for query in queries:        
+    for i, query in enumerate(queries_list, start=1):
+        
         print(query)
         query_result = pd.read_sql(query, conn)
         print(query_result)
         print("-" * 50)
+
+
+        queries_results[f'query_{i}'] = query_result.to_dict(orient='records')
+        
+    return queries_results
+       
+
+def load_results_to_json(df, json_path = json_path):
+    with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(df, f, indent=4, ensure_ascii=False)
         
 
 
 
-# df = extract(url, first_table_attributes)
-
-# print(df)
 
 
 
@@ -112,23 +118,32 @@ log_message('Data extraction complete. Initiating Transformation process')
 
 df = transform(df, exchange_path)
 
-log_message('Data transformation complete. Initiating loading process')
+log_message('Data transformation complete. Initiating loading process to csv and json')
 
 load_to_csv(df)
 
-log_message('Data saved to CSV file')
 
-conn = sqlite3.connect(db_name)
+
+log_message('Data saved to CSV and Jsons files')
+
+
 
 log_message('SQL Connection initiated')
 
+conn = sqlite3.connect(db_name)
 
 load_to_db(df, db_name, table_name, conn)
 
 
 log_message('Data loaded to Database as a table, Executing queries')
 
+
 run_queries(queries_list, conn)
+
+df2 = run_queries(queries_list, conn)
+load_results_to_json(df2)
+
+log_message('Query results saved as a JSON file.')
 
 log_message('Process Complete')
 
